@@ -33,21 +33,74 @@
         circle {
             transition: stroke-dasharray 0.4s cubic-bezier(0.4, 0, 0.2, 1), stroke-dashoffset 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
+        /* M3 Slider Styling */
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 9999px;
+            background: #e2e8f0;
+            outline: none;
+            transition: background 0.2s;
+        }
+        .dark input[type="range"] {
+            background: #2e3036;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 4px solid #ffffff;
+            transition: transform 0.1s ease, border-width 0.1s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+        }
+        .dark input[type="range"]::-webkit-slider-thumb {
+            border: 4px solid #1a1c22;
+        }
+        input[type="range"]::-webkit-slider-thumb:active {
+            transform: scale(1.2);
+            border-width: 2px;
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 4px solid #ffffff;
+            transition: transform 0.1s ease, border-width 0.1s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+        }
+        .dark input[type="range"]::-moz-range-thumb {
+            border: 4px solid #1a1c22;
+        }
+        input[type="range"]::-moz-range-thumb:active {
+            transform: scale(1.2);
+            border-width: 2px;
+        }
+        .slider-spy::-webkit-slider-thumb { background-color: #3b82f6; }
+        .slider-spy::-moz-range-thumb { background-color: #3b82f6; }
+        
+        .slider-fci::-webkit-slider-thumb { background-color: #10b981; }
+        .slider-fci::-moz-range-thumb { background-color: #10b981; }
+        
+        .slider-lab::-webkit-slider-thumb { background-color: #8b5cf6; }
+        .slider-lab::-moz-range-thumb { background-color: #8b5cf6; }
     </style>
 </head>
 
-<body class="bg-slate-50 text-slate-800 dark:bg-[#090d16] dark:text-slate-100 min-h-screen pb-16 transition-colors duration-300">
+<body class="bg-[#f6f8fc] text-slate-900 dark:bg-[#111318] dark:text-slate-100 min-h-screen pb-16 transition-colors duration-300">
 
-    <!-- Header Principal -->
-    <div class="bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-slate-900 dark:to-slate-950 text-white px-5 pt-6 pb-8 rounded-b-[2.5rem] shadow-xl relative overflow-hidden transition-all duration-300">
-        <!-- Decoración de fondo de gradient -->
-        <div class="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-blue-500/20 blur-2xl"></div>
-        <div class="absolute -left-10 -bottom-10 w-40 h-40 rounded-full bg-indigo-500/20 blur-2xl"></div>
-
-        <div class="flex justify-between items-center relative z-10">
-            <div>
-                <h1 class="text-2xl font-extrabold flex items-center gap-2 tracking-tight">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-blue-200" viewBox="0 0 24 24" fill="none"
+    <!-- Header Principal (Estilo Plano Cashew/Material 3) -->
+    <header class="w-full px-6 pt-6 pb-2 flex justify-between items-center transition-all duration-300">
+        <div>
+            <h1 class="text-2xl font-extrabold flex items-center gap-2.5 tracking-tight text-slate-900 dark:text-white">
+                <div class="bg-blue-600 text-white p-2 rounded-2xl shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
                         <line x1="8" y1="6" x2="16" y2="6"></line>
@@ -58,40 +111,39 @@
                         <line x1="8" y1="14" x2="8" y2="14"></line>
                         <line x1="8" y1="18" x2="8" y2="18"></line>
                     </svg>
-                    <span>Inversión 70/20/10</span>
-                </h1>
-                <p class="text-blue-100/80 dark:text-slate-400 text-xs mt-1 font-medium tracking-wide">Distribuidor de Excedentes Inteligente</p>
-            </div>
-            
-            <!-- Botón Modo Oscuro -->
-            <button id="btnToggleDark" class="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 active:scale-95 border border-white/10 transition-all cursor-pointer" aria-label="Cambiar tema">
-                <!-- Sol (modo claro) -->
-                <svg id="iconSun" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-300 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="5"></circle>
-                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
-                <!-- Luna (modo oscuro) -->
-                <svg id="iconMoon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                </svg>
-            </button>
+                </div>
+                <span>Stocks</span>
+            </h1>
         </div>
-    </div>
+        
+        <!-- Botón Modo Oscuro -->
+        <button id="btnToggleDark" class="p-3 rounded-full bg-slate-100 hover:bg-slate-200 dark:bg-slate-900 dark:hover:bg-slate-800 border border-slate-200/40 dark:border-slate-800 text-slate-700 dark:text-slate-300 active:scale-95 transition-all cursor-pointer" aria-label="Cambiar tema">
+            <!-- Sol (modo claro) -->
+            <svg id="iconSun" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 dark:text-amber-300 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <!-- Luna (modo oscuro) -->
+            <svg id="iconMoon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-600 dark:text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+    </header>
 
     <!-- Pestañas de Navegación -->
-    <div class="px-4 -mt-4 relative z-20">
-        <div class="bg-white dark:bg-slate-900 p-1.5 rounded-2xl shadow-xl flex gap-1 border border-slate-100 dark:border-slate-800 transition-all duration-300">
-            <button id="btnTabMensual" class="flex-1 py-3 text-sm font-bold rounded-xl bg-blue-600 text-white shadow-md transition-all active:scale-[0.98] cursor-pointer">
+    <div class="px-6 mt-2 relative z-20">
+        <div class="bg-slate-200/50 dark:bg-slate-900/60 p-1.5 rounded-full flex gap-1 border border-slate-300/30 dark:border-slate-800/40 transition-all duration-300">
+            <button id="btnTabMensual" class="flex-1 py-2.5 text-sm font-bold rounded-full bg-blue-600 text-white shadow-sm transition-all active:scale-[0.98] cursor-pointer">
                 Sueldo / Flujo
             </button>
-            <button id="btnTabRebalanceo" class="flex-1 py-3 text-sm font-bold rounded-xl bg-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-all active:scale-[0.98] cursor-pointer">
+            <button id="btnTabRebalanceo" class="flex-1 py-2.5 text-sm font-bold rounded-full bg-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all active:scale-[0.98] cursor-pointer">
                 Rebalanceo
             </button>
         </div>
@@ -100,20 +152,19 @@
     <!-- CONTENEDOR PRINCIPAL -->
     <main class="mt-6">
 
-        <!-- TAB 1: FLUJO MENSUAL -->
         <div id="tabMensual" class="px-4 space-y-6 transition-all duration-300">
 
             <!-- Card de Entradas -->
-            <div class="bg-white dark:bg-slate-900 p-5 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-800/60 transition-all duration-300 space-y-5">
+            <div class="bg-white dark:bg-[#1a1c22] p-5 rounded-[28px] shadow-md border border-slate-200/50 dark:border-[#2e3036] transition-all duration-300 space-y-5">
                 <!-- Ingresos -->
                 <div>
                     <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-2">Ingresos Totales</label>
                     <div class="relative">
                         <span class="absolute left-4 top-3.5 text-slate-400 dark:text-slate-500 font-extrabold text-lg">$</span>
                         <input type="text" id="inputIngresos" value="2750"
-                            class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl py-3.5 pl-9 pr-12 text-xl font-bold text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all"
+                            class="w-full bg-slate-100/50 dark:bg-[#0f1014] border border-slate-200 dark:border-[#2a2c33] rounded-2xl py-3.5 pl-9 pr-12 text-xl font-bold text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all"
                             placeholder="Ej: 2000+750">
-                        <button onclick="limpiarInput('inputIngresos')" class="absolute right-3.5 top-3.5 text-slate-300 dark:text-slate-600 hover:text-slate-500 cursor-pointer" aria-label="Limpiar">
+                        <button onclick="limpiarInput('inputIngresos')" class="absolute right-3.5 top-3.5 text-slate-400 dark:text-slate-500 hover:text-slate-500 cursor-pointer" aria-label="Limpiar">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" /></svg>
                         </button>
                     </div>
@@ -121,9 +172,9 @@
                     <div class="flex justify-between items-center mt-2 px-1">
                         <span id="previewIngresos" class="text-xs font-semibold text-blue-500 dark:text-blue-400">= $0</span>
                         <div class="flex gap-1">
-                            <button onclick="ajustarValor('inputIngresos', 500)" class="text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-1 rounded-lg active:scale-90 hover:bg-slate-200 transition-all cursor-pointer">+500</button>
-                            <button onclick="ajustarValor('inputIngresos', 1000)" class="text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-1 rounded-lg active:scale-90 hover:bg-slate-200 transition-all cursor-pointer">+1k</button>
-                            <button onclick="ajustarValor('inputIngresos', 5000)" class="text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-1 rounded-lg active:scale-90 hover:bg-slate-200 transition-all cursor-pointer">+5k</button>
+                            <button onclick="ajustarValor('inputIngresos', 500)" class="text-[10px] font-bold border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full active:scale-90 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer">+500</button>
+                            <button onclick="ajustarValor('inputIngresos', 1000)" class="text-[10px] font-bold border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full active:scale-90 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer">+1k</button>
+                            <button onclick="ajustarValor('inputIngresos', 5000)" class="text-[10px] font-bold border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full active:scale-90 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer">+5k</button>
                         </div>
                     </div>
                 </div>
@@ -134,9 +185,9 @@
                     <div class="relative">
                         <span class="absolute left-4 top-3.5 text-slate-400 dark:text-slate-500 font-extrabold text-lg">$</span>
                         <input type="text" id="inputGastos" value="1250"
-                            class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl py-3.5 pl-9 pr-12 text-xl font-bold text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500 dark:focus:ring-rose-400 transition-all"
+                            class="w-full bg-slate-100/50 dark:bg-[#0f1014] border border-slate-200 dark:border-[#2a2c33] rounded-2xl py-3.5 pl-9 pr-12 text-xl font-bold text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-rose-500 dark:focus:ring-rose-400 transition-all"
                             placeholder="Ej: 1000+250">
-                        <button onclick="limpiarInput('inputGastos')" class="absolute right-3.5 top-3.5 text-slate-300 dark:text-slate-600 hover:text-slate-500 cursor-pointer" aria-label="Limpiar">
+                        <button onclick="limpiarInput('inputGastos')" class="absolute right-3.5 top-3.5 text-slate-400 dark:text-slate-500 hover:text-slate-500 cursor-pointer" aria-label="Limpiar">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" /></svg>
                         </button>
                     </div>
@@ -144,9 +195,9 @@
                     <div class="flex justify-between items-center mt-2 px-1">
                         <span id="previewGastos" class="text-xs font-semibold text-rose-500 dark:text-rose-400">= $0</span>
                         <div class="flex gap-1">
-                            <button onclick="ajustarValor('inputGastos', 500)" class="text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-1 rounded-lg active:scale-90 hover:bg-slate-200 transition-all cursor-pointer">+500</button>
-                            <button onclick="ajustarValor('inputGastos', 1000)" class="text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-1 rounded-lg active:scale-90 hover:bg-slate-200 transition-all cursor-pointer">+1k</button>
-                            <button onclick="ajustarValor('inputGastos', 5000)" class="text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-1 rounded-lg active:scale-90 hover:bg-slate-200 transition-all cursor-pointer">+5k</button>
+                            <button onclick="ajustarValor('inputGastos', 500)" class="text-[10px] font-bold border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full active:scale-90 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer">+500</button>
+                            <button onclick="ajustarValor('inputGastos', 1000)" class="text-[10px] font-bold border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full active:scale-90 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer">+1k</button>
+                            <button onclick="ajustarValor('inputGastos', 5000)" class="text-[10px] font-bold border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full active:scale-90 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer">+5k</button>
                         </div>
                     </div>
                 </div>
@@ -155,7 +206,7 @@
             <!-- Excedente y Gráfico -->
             <div class="flex gap-4 items-center">
                 <!-- Excedente de Ahorro -->
-                <div class="bg-gradient-to-br from-emerald-500 to-teal-600 dark:from-emerald-950 dark:to-teal-900 text-white p-5 rounded-3xl shadow-lg flex-1 min-h-[120px] flex flex-col justify-between transition-all duration-300">
+                <div class="bg-gradient-to-br from-emerald-500 to-teal-600 dark:from-emerald-950 dark:to-teal-900 text-white p-5 rounded-[28px] shadow-lg flex-1 min-h-[120px] flex flex-col justify-between transition-all duration-300">
                     <div>
                         <p class="text-emerald-100/80 dark:text-emerald-400/80 text-[10px] font-bold uppercase tracking-wider">Libre para invertir</p>
                         <h2 id="txtExcedente" class="text-2xl font-black mt-1">$1.500</h2>
@@ -167,7 +218,7 @@
                 </div>
                 
                 <!-- Gráfico de Dona (SVG) -->
-                <div class="bg-white dark:bg-slate-900 p-3 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-800/60 w-[120px] h-[120px] flex items-center justify-center transition-all duration-300 relative">
+                <div class="bg-white dark:bg-[#1a1c22] p-3 rounded-[28px] shadow-md border border-slate-200/50 dark:border-[#2e3036] w-[120px] h-[120px] flex items-center justify-center transition-all duration-300 relative">
                     <svg viewBox="0 0 100 100" class="w-full h-full transform -rotate-90">
                         <!-- Círculo fondo -->
                         <circle cx="50" cy="50" r="38" fill="transparent" stroke="currentColor" stroke-width="12" class="text-slate-100 dark:text-slate-800"></circle>
@@ -179,7 +230,53 @@
                         <circle id="donutLab" cx="50" cy="50" r="38" fill="transparent" stroke="#8b5cf6" stroke-width="12" stroke-dasharray="238.76" stroke-dashoffset="0" stroke-linecap="round"></circle>
                     </svg>
                     <!-- Centro del gráfico con leyenda general -->
-                    <span class="absolute text-[10px] font-extrabold text-slate-400 tracking-tighter uppercase">70/20/10</span>
+                    <span id="donutCenterText" class="absolute text-[10px] font-extrabold text-slate-400 tracking-tighter uppercase">70/20/10</span>
+                </div>
+            </div>
+
+            <!-- Configuración de Objetivos (Sliders) -->
+            <div class="bg-white dark:bg-[#1a1c22] p-5 rounded-[28px] shadow-md border border-slate-200/50 dark:border-[#2e3036] transition-all duration-300 space-y-4">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Objetivos de Distribución</h3>
+                    <span id="badgeSum" class="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/40">Total: 100%</span>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Slider SPY -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+                                El Fuerte (SPY)
+                            </span>
+                            <span id="lblPctSpy" class="font-extrabold text-blue-600 dark:text-blue-400">70%</span>
+                        </div>
+                        <input type="range" id="sliderSpy" min="0" max="100" value="70" class="slider-spy w-full h-2 rounded-lg appearance-none cursor-pointer">
+                    </div>
+
+                    <!-- Slider FCI -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                                El Candado (FCIs)
+                            </span>
+                            <span id="lblPctFci" class="font-extrabold text-emerald-600 dark:text-emerald-400">20%</span>
+                        </div>
+                        <input type="range" id="sliderFci" min="0" max="100" value="20" class="slider-fci w-full h-2 rounded-lg appearance-none cursor-pointer">
+                    </div>
+
+                    <!-- Slider Lab -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span>
+                                El Lab (Cripto/Acciones)
+                            </span>
+                            <span id="lblPctLab" class="font-extrabold text-purple-600 dark:text-purple-400">10%</span>
+                        </div>
+                        <input type="range" id="sliderLab" min="0" max="100" value="10" class="slider-lab w-full h-2 rounded-lg appearance-none cursor-pointer">
+                    </div>
                 </div>
             </div>
 
@@ -188,7 +285,7 @@
                 <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 ml-1">Plan de Inversión Sugerido</h3>
 
                 <!-- 70% SPY -->
-                <div class="bg-white dark:bg-slate-900 p-4 rounded-2xl shadow-md border border-slate-100 dark:border-slate-800/50 flex items-center justify-between transition-all duration-300 hover:translate-x-1">
+                <div class="bg-white dark:bg-[#1a1c22] p-4 rounded-[20px] shadow-md border border-slate-200/50 dark:border-[#2e3036] flex items-center justify-between transition-all duration-300 hover:translate-x-1">
                     <div class="flex items-center gap-3">
                         <div class="bg-blue-50 dark:bg-blue-950/50 p-2.5 rounded-xl text-blue-600 dark:text-blue-400">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -197,17 +294,17 @@
                         </div>
                         <div>
                             <h4 class="font-bold text-sm text-slate-800 dark:text-slate-200">El Fuerte (SPY)</h4>
-                            <p class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase">70% S&P 500 Index</p>
+                            <p class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase"><span id="lblPctSpyCard">70</span>% S&P 500 Index</p>
                         </div>
                     </div>
                     <div class="text-right">
                         <div id="valSpy" class="text-lg font-extrabold text-slate-800 dark:text-slate-100">$1.050</div>
-                        <span class="text-[9px] font-bold text-blue-500 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/40 px-1.5 py-0.5 rounded-md">Largo Plazo</span>
+                        <span class="text-[9px] font-bold text-blue-500 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/40 px-2.5 py-0.5 rounded-full">Largo Plazo</span>
                     </div>
                 </div>
 
                 <!-- 20% FCI -->
-                <div class="bg-white dark:bg-slate-900 p-4 rounded-2xl shadow-md border border-slate-100 dark:border-slate-800/50 flex items-center justify-between transition-all duration-300 hover:translate-x-1">
+                <div class="bg-white dark:bg-[#1a1c22] p-4 rounded-[20px] shadow-md border border-slate-200/50 dark:border-[#2e3036] flex items-center justify-between transition-all duration-300 hover:translate-x-1">
                     <div class="flex items-center gap-3">
                         <div class="bg-emerald-50 dark:bg-emerald-950/50 p-2.5 rounded-xl text-emerald-600 dark:text-emerald-400">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -216,17 +313,17 @@
                         </div>
                         <div>
                             <h4 class="font-bold text-sm text-slate-800 dark:text-slate-200">El Candado (FCIs)</h4>
-                            <p class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase">20% Fondos Comunes / Cash</p>
+                            <p class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase"><span id="lblPctFciCard">20</span>% Fondos Comunes / Cash</p>
                         </div>
                     </div>
                     <div class="text-right">
                         <div id="valFci" class="text-lg font-extrabold text-slate-800 dark:text-slate-100">$300</div>
-                        <span class="text-[9px] font-bold text-emerald-500 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-1.5 py-0.5 rounded-md">Conservador</span>
+                        <span class="text-[9px] font-bold text-emerald-500 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-0.5 rounded-full">Conservador</span>
                     </div>
                 </div>
 
                 <!-- 10% Acciones / Cripto / Lab -->
-                <div class="bg-white dark:bg-slate-900 p-4 rounded-2xl shadow-md border border-slate-100 dark:border-slate-800/50 flex items-center justify-between transition-all duration-300 hover:translate-x-1">
+                <div class="bg-white dark:bg-[#1a1c22] p-4 rounded-[20px] shadow-md border border-slate-200/50 dark:border-[#2e3036] flex items-center justify-between transition-all duration-300 hover:translate-x-1">
                     <div class="flex items-center gap-3">
                         <div class="bg-purple-50 dark:bg-purple-950/50 p-2.5 rounded-xl text-purple-600 dark:text-purple-400">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -235,12 +332,12 @@
                         </div>
                         <div>
                             <h4 class="font-bold text-sm text-slate-800 dark:text-slate-200">El Lab (Acciones/Cripto)</h4>
-                            <p class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase">10% Activos Volátiles / Oportunidad</p>
+                            <p class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase"><span id="lblPctLabCard">10</span>% Activos Volátiles / Oportunidad</p>
                         </div>
                     </div>
                     <div class="text-right">
                         <div id="valLab" class="text-lg font-extrabold text-slate-800 dark:text-slate-100">$150</div>
-                        <span class="text-[9px] font-bold text-purple-500 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/40 px-1.5 py-0.5 rounded-md">Alto Riesgo</span>
+                        <span class="text-[9px] font-bold text-purple-500 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/40 px-2.5 py-0.5 rounded-full">Alto Riesgo</span>
                     </div>
                 </div>
             </div>
@@ -249,7 +346,7 @@
         <!-- TAB 2: REBALANCEO DE CARTERA -->
         <div id="tabRebalanceo" class="px-4 space-y-6 hidden transition-all duration-300">
             <!-- Inputs Actuales -->
-            <div class="bg-white dark:bg-slate-900 p-5 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-800/60 transition-all duration-300 space-y-5">
+            <div class="bg-white dark:bg-[#1a1c22] p-5 rounded-[28px] shadow-md border border-slate-200/50 dark:border-[#2e3036] transition-all duration-300 space-y-5">
                 <div class="flex justify-between items-center mb-1">
                     <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">Cartera Actual</h3>
                     <!-- Gráfico Dona Mini en Rebalanceo -->
@@ -266,66 +363,66 @@
                 <div class="space-y-4">
                     <!-- 1. S&P 500 (SPY) -->
                     <div>
-                        <label class="block text-xs font-bold text-blue-500 dark:text-blue-400 mb-1.5 uppercase">Monto en S&P 500 (SPY) - Obj: 70%</label>
+                        <label class="block text-xs font-bold text-blue-500 dark:text-blue-400 mb-1.5 uppercase">Monto en S&P 500 (SPY) - Obj: <span id="lblRebalObjSpy">70</span>%</label>
                         <div class="relative">
                             <span class="absolute left-4 top-3.5 text-slate-400 dark:text-slate-500 font-extrabold text-lg">$</span>
                             <input type="text" id="inputActSpy" value="1398291"
-                                class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl py-3.5 pl-9 pr-12 text-lg font-bold text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all"
+                                class="w-full bg-slate-100/50 dark:bg-[#0f1014] border border-slate-200 dark:border-[#2a2c33] rounded-2xl py-3.5 pl-9 pr-12 text-lg font-bold text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all"
                                 placeholder="Ej: 1000000+398291">
-                            <button onclick="limpiarInput('inputActSpy')" class="absolute right-3.5 top-3.5 text-slate-300 dark:text-slate-600 hover:text-slate-500 cursor-pointer" aria-label="Limpiar">
+                            <button onclick="limpiarInput('inputActSpy')" class="absolute right-3.5 top-3.5 text-slate-400 dark:text-slate-500 hover:text-slate-500 cursor-pointer" aria-label="Limpiar">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" /></svg>
                             </button>
                         </div>
                         <div class="flex justify-between items-center mt-1.5 px-1">
                             <span id="previewActSpy" class="text-xs font-semibold text-blue-500 dark:text-blue-400">= $0</span>
                             <div class="flex gap-1">
-                                <button onclick="ajustarValor('inputActSpy', 10000)" class="text-[9px] font-extrabold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded-lg active:scale-90 cursor-pointer">+10k</button>
-                                <button onclick="ajustarValor('inputActSpy', 50000)" class="text-[9px] font-extrabold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded-lg active:scale-90 cursor-pointer">+50k</button>
-                                <button onclick="ajustarValor('inputActSpy', 100000)" class="text-[9px] font-extrabold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded-lg active:scale-90 cursor-pointer">+100k</button>
+                                <button onclick="ajustarValor('inputActSpy', 10000)" class="text-[9px] font-bold border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-full active:scale-90 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer">+10k</button>
+                                <button onclick="ajustarValor('inputActSpy', 50000)" class="text-[9px] font-bold border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-full active:scale-90 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer">+50k</button>
+                                <button onclick="ajustarValor('inputActSpy', 100000)" class="text-[9px] font-bold border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-full active:scale-90 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer">+100k</button>
                             </div>
                         </div>
                     </div>
 
                     <!-- 2. FCIs -->
                     <div>
-                        <label class="block text-xs font-bold text-emerald-500 dark:text-emerald-400 mb-1.5 uppercase">Monto en FCIs - Obj: 20%</label>
+                        <label class="block text-xs font-bold text-emerald-500 dark:text-emerald-400 mb-1.5 uppercase">Monto en FCIs - Obj: <span id="lblRebalObjFci">20</span>%</label>
                         <div class="relative">
                             <span class="absolute left-4 top-3.5 text-slate-400 dark:text-slate-500 font-extrabold text-lg">$</span>
                             <input type="text" id="inputActFci" value="399511"
-                                class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl py-3.5 pl-9 pr-12 text-lg font-bold text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:focus:ring-emerald-400 transition-all"
+                                class="w-full bg-slate-100/50 dark:bg-[#0f1014] border border-slate-200 dark:border-[#2a2c33] rounded-2xl py-3.5 pl-9 pr-12 text-lg font-bold text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 dark:focus:ring-emerald-400 transition-all"
                                 placeholder="Ej: 300000+99511">
-                            <button onclick="limpiarInput('inputActFci')" class="absolute right-3.5 top-3.5 text-slate-300 dark:text-slate-600 hover:text-slate-500 cursor-pointer" aria-label="Limpiar">
+                            <button onclick="limpiarInput('inputActFci')" class="absolute right-3.5 top-3.5 text-slate-400 dark:text-slate-500 hover:text-slate-500 cursor-pointer" aria-label="Limpiar">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" /></svg>
                             </button>
                         </div>
                         <div class="flex justify-between items-center mt-1.5 px-1">
                             <span id="previewActFci" class="text-xs font-semibold text-emerald-500 dark:text-emerald-400">= $0</span>
                             <div class="flex gap-1">
-                                <button onclick="ajustarValor('inputActFci', 10000)" class="text-[9px] font-extrabold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded-lg active:scale-90 cursor-pointer">+10k</button>
-                                <button onclick="ajustarValor('inputActFci', 50000)" class="text-[9px] font-extrabold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded-lg active:scale-90 cursor-pointer">+50k</button>
-                                <button onclick="ajustarValor('inputActFci', 100000)" class="text-[9px] font-extrabold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded-lg active:scale-90 cursor-pointer">+100k</button>
+                                <button onclick="ajustarValor('inputActFci', 10000)" class="text-[9px] font-bold border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-full active:scale-90 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer">+10k</button>
+                                <button onclick="ajustarValor('inputActFci', 50000)" class="text-[9px] font-bold border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-full active:scale-90 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer">+50k</button>
+                                <button onclick="ajustarValor('inputActFci', 100000)" class="text-[9px] font-bold border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-full active:scale-90 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer">+100k</button>
                             </div>
                         </div>
                     </div>
 
                     <!-- 3. Acciones / Cripto (Lab) -->
                     <div>
-                        <label class="block text-xs font-bold text-purple-500 dark:text-purple-400 mb-1.5 uppercase">Monto en Acciones/Bonos (Lab) - Obj: 10%</label>
+                        <label class="block text-xs font-bold text-purple-500 dark:text-purple-400 mb-1.5 uppercase">Monto en Acciones/Bonos (Lab) - Obj: <span id="lblRebalObjLab">10</span>%</label>
                         <div class="relative">
                             <span class="absolute left-4 top-3.5 text-slate-400 dark:text-slate-500 font-extrabold text-lg">$</span>
                             <input type="text" id="inputActLab" value="199757"
-                                class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl py-3.5 pl-9 pr-12 text-lg font-bold text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:focus:ring-purple-400 transition-all"
+                                class="w-full bg-slate-100/50 dark:bg-[#0f1014] border border-slate-200 dark:border-[#2a2c33] rounded-2xl py-3.5 pl-9 pr-12 text-lg font-bold text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:focus:ring-purple-400 transition-all"
                                 placeholder="Ej: 150000+49757">
-                            <button onclick="limpiarInput('inputActLab')" class="absolute right-3.5 top-3.5 text-slate-300 dark:text-slate-600 hover:text-slate-500 cursor-pointer" aria-label="Limpiar">
+                            <button onclick="limpiarInput('inputActLab')" class="absolute right-3.5 top-3.5 text-slate-400 dark:text-slate-500 hover:text-slate-500 cursor-pointer" aria-label="Limpiar">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" /></svg>
                             </button>
                         </div>
                         <div class="flex justify-between items-center mt-1.5 px-1">
                             <span id="previewActLab" class="text-xs font-semibold text-purple-500 dark:text-purple-400">= $0</span>
                             <div class="flex gap-1">
-                                <button onclick="ajustarValor('inputActLab', 10000)" class="text-[9px] font-extrabold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded-lg active:scale-90 cursor-pointer">+10k</button>
-                                <button onclick="ajustarValor('inputActLab', 50000)" class="text-[9px] font-extrabold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded-lg active:scale-90 cursor-pointer">+50k</button>
-                                <button onclick="ajustarValor('inputActLab', 100000)" class="text-[9px] font-extrabold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded-lg active:scale-90 cursor-pointer">+100k</button>
+                                <button onclick="ajustarValor('inputActLab', 10000)" class="text-[9px] font-bold border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-full active:scale-90 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer">+10k</button>
+                                <button onclick="ajustarValor('inputActLab', 50000)" class="text-[9px] font-bold border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-full active:scale-90 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer">+50k</button>
+                                <button onclick="ajustarValor('inputActLab', 100000)" class="text-[9px] font-bold border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300 px-2.5 py-1 rounded-full active:scale-90 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer">+100k</button>
                             </div>
                         </div>
                     </div>
@@ -333,7 +430,7 @@
             </div>
 
             <!-- Patrimonio Total -->
-            <div class="bg-gradient-to-r from-slate-800 to-slate-900 dark:from-slate-900 dark:to-slate-950 text-white p-5 rounded-3xl shadow-lg flex items-center justify-between transition-all duration-300 border border-slate-700/10 dark:border-slate-800/80">
+            <div class="bg-gradient-to-r from-slate-800 to-slate-900 dark:from-slate-900 dark:to-slate-950 text-white p-5 rounded-[28px] shadow-lg flex items-center justify-between transition-all duration-300 border border-slate-700/10 dark:border-slate-800/80">
                 <div>
                     <p class="text-slate-400 text-[10px] font-bold uppercase tracking-wider">Patrimonio Neto Cartera</p>
                     <h2 id="txtPatrimonio" class="text-2xl font-black text-white mt-1">$0</h2>
@@ -351,56 +448,56 @@
 
                 <div class="space-y-3">
                     <!-- 1. SPY Rebalanceo -->
-                    <div class="bg-white dark:bg-slate-900 p-4 rounded-2xl shadow-md border border-slate-100 dark:border-slate-800/50 space-y-3 transition-all duration-300">
+                    <div class="bg-white dark:bg-[#1a1c22] p-4 rounded-[20px] shadow-md border border-slate-200/50 dark:border-[#2e3036] space-y-3 transition-all duration-300">
                         <div class="flex justify-between items-center">
-                            <h4 class="font-bold text-sm text-slate-800 dark:text-slate-200">S&P 500 (SPY) <span class="text-blue-500 text-xs ml-1 font-bold">(Target 70%)</span></h4>
+                            <h4 class="font-bold text-sm text-slate-800 dark:text-slate-200">S&P 500 (SPY) <span class="text-blue-500 text-xs ml-1 font-bold">(Target <span id="targetRebalSpy">70</span>%)</span></h4>
                             <span id="porcActSpy" class="text-xs font-bold text-slate-400 dark:text-slate-500">Actual: 0%</span>
                         </div>
                         
                         <!-- Mini progress bar -->
-                        <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div class="w-full bg-slate-200/50 dark:bg-[#111318] h-2 rounded-full overflow-hidden">
                             <div id="barSpy" class="bg-blue-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
                         </div>
 
                         <div class="flex justify-between items-center text-xs">
                             <p class="text-slate-400 dark:text-slate-500">Ideal: <span id="idealSpy" class="font-extrabold text-slate-600 dark:text-slate-300">$0</span></p>
-                            <span id="diffSpy" class="text-[10px] font-black px-2.5 py-1 rounded-lg">Calculando...</span>
+                            <span id="diffSpy" class="text-[10px] font-black px-2.5 py-1 rounded-full">Calculando...</span>
                         </div>
                     </div>
 
                     <!-- 2. FCI Rebalanceo -->
-                    <div class="bg-white dark:bg-slate-900 p-4 rounded-2xl shadow-md border border-slate-100 dark:border-slate-800/50 space-y-3 transition-all duration-300">
+                    <div class="bg-white dark:bg-[#1a1c22] p-4 rounded-[20px] shadow-md border border-slate-200/50 dark:border-[#2e3036] space-y-3 transition-all duration-300">
                         <div class="flex justify-between items-center">
-                            <h4 class="font-bold text-sm text-slate-800 dark:text-slate-200">FCIs <span class="text-emerald-500 text-xs ml-1 font-bold">(Target 20%)</span></h4>
+                            <h4 class="font-bold text-sm text-slate-800 dark:text-slate-200">FCIs <span class="text-emerald-500 text-xs ml-1 font-bold">(Target <span id="targetRebalFci">20</span>%)</span></h4>
                             <span id="porcActFci" class="text-xs font-bold text-slate-400 dark:text-slate-500">Actual: 0%</span>
                         </div>
 
                         <!-- Mini progress bar -->
-                        <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div class="w-full bg-slate-200/50 dark:bg-[#111318] h-2 rounded-full overflow-hidden">
                             <div id="barFci" class="bg-emerald-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
                         </div>
 
                         <div class="flex justify-between items-center text-xs">
                             <p class="text-slate-400 dark:text-slate-500">Ideal: <span id="idealFci" class="font-extrabold text-slate-600 dark:text-slate-300">$0</span></p>
-                            <span id="diffFci" class="text-[10px] font-black px-2.5 py-1 rounded-lg">Calculando...</span>
+                            <span id="diffFci" class="text-[10px] font-black px-2.5 py-1 rounded-full">Calculando...</span>
                         </div>
                     </div>
 
                     <!-- 3. LAB Rebalanceo -->
-                    <div class="bg-white dark:bg-slate-900 p-4 rounded-2xl shadow-md border border-slate-100 dark:border-slate-800/50 space-y-3 transition-all duration-300">
+                    <div class="bg-white dark:bg-[#1a1c22] p-4 rounded-[20px] shadow-md border border-slate-200/50 dark:border-[#2e3036] space-y-3 transition-all duration-300">
                         <div class="flex justify-between items-center">
-                            <h4 class="font-bold text-sm text-slate-800 dark:text-slate-200">Acciones/Cripto <span class="text-purple-500 text-xs ml-1 font-bold">(Target 10%)</span></h4>
+                            <h4 class="font-bold text-sm text-slate-800 dark:text-slate-200">Acciones/Cripto <span class="text-purple-500 text-xs ml-1 font-bold">(Target <span id="targetRebalLab">10</span>%)</span></h4>
                             <span id="porcActLab" class="text-xs font-bold text-slate-400 dark:text-slate-500">Actual: 0%</span>
                         </div>
 
                         <!-- Mini progress bar -->
-                        <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                        <div class="w-full bg-slate-200/50 dark:bg-[#111318] h-2 rounded-full overflow-hidden">
                             <div id="barLab" class="bg-purple-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
                         </div>
 
                         <div class="flex justify-between items-center text-xs">
                             <p class="text-slate-400 dark:text-slate-500">Ideal: <span id="idealLab" class="font-extrabold text-slate-600 dark:text-slate-300">$0</span></p>
-                            <span id="diffLab" class="text-[10px] font-black px-2.5 py-1 rounded-lg">Calculando...</span>
+                            <span id="diffLab" class="text-[10px] font-black px-2.5 py-1 rounded-full">Calculando...</span>
                         </div>
                     </div>
                 </div>
@@ -464,6 +561,34 @@
         const donutActFci = document.getElementById('donutActFci');
         const donutActLab = document.getElementById('donutActLab');
 
+        // Sliders y porcentajes dinámicos
+        const sliderSpy = document.getElementById('sliderSpy');
+        const sliderFci = document.getElementById('sliderFci');
+        const sliderLab = document.getElementById('sliderLab');
+
+        const lblPctSpy = document.getElementById('lblPctSpy');
+        const lblPctFci = document.getElementById('lblPctFci');
+        const lblPctLab = document.getElementById('lblPctLab');
+
+        const lblPctSpyCard = document.getElementById('lblPctSpyCard');
+        const lblPctFciCard = document.getElementById('lblPctFciCard');
+        const lblPctLabCard = document.getElementById('lblPctLabCard');
+
+        const lblRebalObjSpy = document.getElementById('lblRebalObjSpy');
+        const lblRebalObjFci = document.getElementById('lblRebalObjFci');
+        const lblRebalObjLab = document.getElementById('lblRebalObjLab');
+
+        const targetRebalSpy = document.getElementById('targetRebalSpy');
+        const targetRebalFci = document.getElementById('targetRebalFci');
+        const targetRebalLab = document.getElementById('targetRebalLab');
+
+        const donutCenterText = document.getElementById('donutCenterText');
+
+        // Valores de porcentaje en estado (default 70/20/10)
+        let pctSpy = 70;
+        let pctFci = 20;
+        let pctLab = 10;
+
         // Circunferencia del círculo SVG con r=38 es 2 * PI * 38 = 238.76
         const c = 238.761;
 
@@ -482,6 +607,28 @@
             if (localStorage.getItem('actSpy')) inputActSpy.value = localStorage.getItem('actSpy');
             if (localStorage.getItem('actLab')) inputActLab.value = localStorage.getItem('actLab');
 
+            // Cargar porcentajes
+            if (localStorage.getItem('pctSpy')) pctSpy = parseInt(localStorage.getItem('pctSpy'));
+            if (localStorage.getItem('pctFci')) pctFci = parseInt(localStorage.getItem('pctFci'));
+            if (localStorage.getItem('pctLab')) pctLab = parseInt(localStorage.getItem('pctLab'));
+
+            // Asegurar que la suma es 100
+            if (pctSpy + pctFci + pctLab !== 100) {
+                pctSpy = 70;
+                pctFci = 20;
+                pctLab = 10;
+            }
+
+            // Sincronizar sliders en UI
+            sliderSpy.value = pctSpy;
+            sliderFci.value = pctFci;
+            sliderLab.value = pctLab;
+
+            // Actualizar etiquetas
+            lblPctSpy.innerText = pctSpy + "%";
+            lblPctFci.innerText = pctFci + "%";
+            lblPctLab.innerText = pctLab + "%";
+
             // Cargar e Inicializar Tema
             const darkTheme = localStorage.getItem('dark-theme');
             if (darkTheme === 'false') {
@@ -493,6 +640,7 @@
                 document.getElementById('iconSun').classList.remove('hidden');
                 document.getElementById('iconMoon').classList.add('hidden');
             }
+            actualizarTrackColors();
             actualizarStatusBarAndroid();
         }
 
@@ -503,6 +651,10 @@
             localStorage.setItem('actFci', inputActFci.value);
             localStorage.setItem('actSpy', inputActSpy.value);
             localStorage.setItem('actLab', inputActLab.value);
+
+            localStorage.setItem('pctSpy', pctSpy);
+            localStorage.setItem('pctFci', pctFci);
+            localStorage.setItem('pctLab', pctLab);
         }
 
         // Limpiar Input
@@ -542,8 +694,8 @@
             tabMensual.classList.remove('hidden');
             tabRebalanceo.classList.add('hidden');
 
-            btnTabMensual.className = "flex-1 py-3 text-sm font-bold rounded-xl bg-blue-600 text-white shadow-md transition-all active:scale-[0.98] cursor-pointer";
-            btnTabRebalanceo.className = "flex-1 py-3 text-sm font-bold rounded-xl bg-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-all active:scale-[0.98] cursor-pointer";
+            btnTabMensual.className = "flex-1 py-2.5 text-sm font-bold rounded-full bg-blue-600 text-white shadow-sm transition-all active:scale-[0.98] cursor-pointer";
+            btnTabRebalanceo.className = "flex-1 py-2.5 text-sm font-bold rounded-full bg-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-all active:scale-[0.98] cursor-pointer";
             calcular();
         });
 
@@ -552,8 +704,8 @@
             tabRebalanceo.classList.remove('hidden');
             tabMensual.classList.add('hidden');
 
-            btnTabRebalanceo.className = "flex-1 py-3 text-sm font-bold rounded-xl bg-blue-600 text-white shadow-md transition-all active:scale-[0.98] cursor-pointer";
-            btnTabMensual.className = "flex-1 py-3 text-sm font-bold rounded-xl bg-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-all active:scale-[0.98] cursor-pointer";
+            btnTabRebalanceo.className = "flex-1 py-2.5 text-sm font-bold rounded-full bg-blue-600 text-white shadow-sm transition-all active:scale-[0.98] cursor-pointer";
+            btnTabMensual.className = "flex-1 py-2.5 text-sm font-bold rounded-full bg-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-all active:scale-[0.98] cursor-pointer";
             
             calcularRebalanceo();
         });
@@ -572,6 +724,7 @@
                 document.getElementById('iconSun').classList.add('hidden');
                 document.getElementById('iconMoon').classList.remove('hidden');
             }
+            actualizarTrackColors();
             actualizarStatusBarAndroid();
         });
 
@@ -623,9 +776,9 @@
                 porcentaje = Math.round((excedente / ingresos) * 100);
             }
 
-            const spy = excedente * 0.70;
-            const fci = excedente * 0.20;
-            const lab = excedente * 0.10;
+            const spy = excedente * (pctSpy / 100);
+            const fci = excedente * (pctFci / 100);
+            const lab = excedente * (pctLab / 100);
 
             txtExcedente.innerText = formatMoneda(excedente);
             txtPorcentaje.innerText = porcentaje + "%";
@@ -644,23 +797,31 @@
             valFci.innerText = formatMoneda(fci);
             valLab.innerText = formatMoneda(lab);
 
-            // Actualizar Donut Sugerido 70/20/10
+            // Actualizar etiquetas de porcentajes en la tarjeta del plan
+            lblPctSpyCard.innerText = pctSpy;
+            lblPctFciCard.innerText = pctFci;
+            lblPctLabCard.innerText = pctLab;
+            
+            // Actualizar el texto del centro de la dona
+            donutCenterText.innerText = `${pctSpy}/${pctFci}/${pctLab}`;
+
+            // Actualizar Donut Sugerido
             if (excedente === 0) {
                 donutSpy.style.strokeDasharray = `0 ${c}`;
                 donutFci.style.strokeDasharray = `0 ${c}`;
                 donutLab.style.strokeDasharray = `0 ${c}`;
             } else {
-                // Graficar 70% SPY (Azul)
-                donutSpy.style.strokeDasharray = `${0.70 * c} ${c}`;
+                // Graficar SPY (Azul)
+                donutSpy.style.strokeDasharray = `${(pctSpy / 100) * c} ${c}`;
                 donutSpy.style.strokeDashoffset = 0;
 
-                // Graficar 20% FCI (Verde)
-                donutFci.style.strokeDasharray = `${0.20 * c} ${c}`;
-                donutFci.style.strokeDashoffset = -(0.70 * c);
+                // Graficar FCI (Verde)
+                donutFci.style.strokeDasharray = `${(pctFci / 100) * c} ${c}`;
+                donutFci.style.strokeDashoffset = -((pctSpy / 100) * c);
 
-                // Graficar 10% Lab (Morado)
-                donutLab.style.strokeDasharray = `${0.10 * c} ${c}`;
-                donutLab.style.strokeDashoffset = -((0.70 + 0.20) * c);
+                // Graficar Lab (Morado)
+                donutLab.style.strokeDasharray = `${(pctLab / 100) * c} ${c}`;
+                donutLab.style.strokeDashoffset = -(((pctSpy + pctFci) / 100) * c);
             }
         }
 
@@ -669,13 +830,13 @@
             // Un umbral de +-500 pesos se considera perfecto para evitar micro-compras/ventas
             if (Math.abs(diff) <= 500) { 
                 element.innerText = "Perfecto";
-                element.className = "text-[10px] font-black text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800/80 px-2.5 py-1 rounded-lg border border-slate-200/40 dark:border-slate-800";
+                element.className = "text-[10px] font-black text-slate-500 dark:text-slate-400 bg-slate-200/40 dark:bg-slate-800/80 px-2.5 py-1 rounded-full border border-slate-200/40 dark:border-slate-800";
             } else if (diff > 0) {
                 element.innerText = "Falta " + formatMoneda(diff) + " (Comprar)";
-                element.className = "text-[10px] font-black text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-1 rounded-lg border border-emerald-100 dark:border-emerald-900/60";
+                element.className = "text-[10px] font-black text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-1 rounded-full border border-emerald-100 dark:border-emerald-900/60";
             } else {
                 element.innerText = "Sobra " + formatMoneda(Math.abs(diff)) + " (Vender)";
-                element.className = "text-[10px] font-black text-rose-500 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 px-2.5 py-1 rounded-lg border border-rose-100 dark:border-rose-900/60";
+                element.className = "text-[10px] font-black text-rose-500 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/40 px-2.5 py-1 rounded-full border border-rose-100 dark:border-rose-900/60";
             }
         }
 
@@ -691,6 +852,15 @@
 
             const total = spy + fci + lab;
             txtPatrimonio.innerText = formatMoneda(total);
+
+            // Sincronizar etiquetas de porcentajes de rebalanceo
+            lblRebalObjSpy.innerText = pctSpy;
+            lblRebalObjFci.innerText = pctFci;
+            lblRebalObjLab.innerText = pctLab;
+            
+            targetRebalSpy.innerText = pctSpy;
+            targetRebalFci.innerText = pctFci;
+            targetRebalLab.innerText = pctLab;
 
             if (total === 0) {
                 porcActFci.innerText = "Actual: 0%";
@@ -729,9 +899,9 @@
             barLab.style.width = `${Math.min(labPct * 100, 100)}%`;
 
             // Valores de Distribución Ideal
-            const objSpy = total * 0.70;
-            const objFci = total * 0.20;
-            const objLab = total * 0.10;
+            const objSpy = total * (pctSpy / 100);
+            const objFci = total * (pctFci / 100);
+            const objLab = total * (pctLab / 100);
 
             idealSpy.innerText = formatMoneda(objSpy);
             idealFci.innerText = formatMoneda(objFci);
@@ -753,6 +923,100 @@
             donutActLab.style.strokeDashoffset = -((spyPct + fciPct) * c);
         }
 
+        // Lógica de auto-balance de sliders
+        function balancearSliders(modificado) {
+            vibrar();
+            let valSpy = parseInt(sliderSpy.value);
+            let valFci = parseInt(sliderFci.value);
+            let valLab = parseInt(sliderLab.value);
+
+            if (modificado === 'spy') {
+                const rest = 100 - valSpy;
+                const prevSum = pctFci + pctLab;
+                if (prevSum > 0) {
+                    valFci = Math.round(rest * (pctFci / prevSum));
+                    valLab = 100 - valSpy - valFci;
+                } else {
+                    valFci = Math.round(rest / 2);
+                    valLab = 100 - valSpy - valFci;
+                }
+            } else if (modificado === 'fci') {
+                const rest = 100 - valFci;
+                const prevSum = pctSpy + pctLab;
+                if (prevSum > 0) {
+                    valSpy = Math.round(rest * (pctSpy / prevSum));
+                    valLab = 100 - valFci - valSpy;
+                } else {
+                    valSpy = Math.round(rest / 2);
+                    valLab = 100 - valFci - valSpy;
+                }
+            } else if (modificado === 'lab') {
+                const rest = 100 - valLab;
+                const prevSum = pctSpy + pctFci;
+                if (prevSum > 0) {
+                    valSpy = Math.round(rest * (pctSpy / prevSum));
+                    valFci = 100 - valLab - valSpy;
+                } else {
+                    valSpy = Math.round(rest / 2);
+                    valFci = 100 - valLab - valSpy;
+                }
+            }
+
+            // Validar límites y sumas
+            valSpy = Math.max(0, Math.min(100, valSpy));
+            valFci = Math.max(0, Math.min(100, valFci));
+            valLab = Math.max(0, Math.min(100, valLab));
+
+            // Ajuste final para sumar 100
+            const diff = 100 - (valSpy + valFci + valLab);
+            if (diff !== 0) {
+                if (modificado === 'spy') {
+                    if (valFci > 0) valFci += diff;
+                    else valLab += diff;
+                } else if (modificado === 'fci') {
+                    if (valSpy > 0) valSpy += diff;
+                    else valLab += diff;
+                } else if (modificado === 'lab') {
+                    if (valSpy > 0) valSpy += diff;
+                    else valFci += diff;
+                }
+            }
+
+            pctSpy = valSpy;
+            pctFci = valFci;
+            pctLab = valLab;
+
+            // Sincronizar UI
+            sliderSpy.value = pctSpy;
+            sliderFci.value = pctFci;
+            sliderLab.value = pctLab;
+
+            lblPctSpy.innerText = pctSpy + "%";
+            lblPctFci.innerText = pctFci + "%";
+            lblPctLab.innerText = pctLab + "%";
+
+            // Actualizar backgrounds
+            actualizarTrackColors();
+
+            // Calcular y Guardar
+            calcular();
+            calcularRebalanceo();
+            guardarDatos();
+        }
+
+        function actualizarTrackColors() {
+            updateSliderBackground(sliderSpy, '#3b82f6');
+            updateSliderBackground(sliderFci, '#10b981');
+            updateSliderBackground(sliderLab, '#8b5cf6');
+        }
+
+        function updateSliderBackground(slider, color) {
+            const val = slider.value;
+            const isDark = document.documentElement.classList.contains('dark');
+            const trackBg = isDark ? '#2e3036' : '#e2e8f0';
+            slider.style.background = `linear-gradient(to right, ${color} 0%, ${color} ${val}%, ${trackBg} ${val}%, ${trackBg} 100%)`;
+        }
+
         // Listeners globales para entradas en tiempo real
         const inputs = [inputIngresos, inputGastos, inputActFci, inputActSpy, inputActLab];
         inputs.forEach(input => {
@@ -762,6 +1026,11 @@
                 guardarDatos();
             });
         });
+
+        // Listeners para Sliders
+        sliderSpy.addEventListener('input', () => balancearSliders('spy'));
+        sliderFci.addEventListener('input', () => balancearSliders('fci'));
+        sliderLab.addEventListener('input', () => balancearSliders('lab'));
 
         // Inicializar la aplicación
         cargarDatosGuardados();
